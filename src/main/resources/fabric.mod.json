@@ -1,0 +1,24 @@
+{
+	"schemaVersion": 1,
+	"id": "columns",
+	"version": "1.0.0",
+	"name": "Columns",
+	"description": "Adds columns to Minecraft.",
+	"authors": [
+		"haykam821"
+	],
+	"contact": {
+		"homepage": "https://github.com/haykam821/Columns#readme",
+		"issues": "https://github.com/haykam821/Columns/issues"
+	},
+	"entrypoints": {
+		"main": [
+			"io.github.haykam821.columns.Main"
+		]
+	},
+	"license": "MIT",
+	"icon": "assets/columns/icon.png",
+	"depends": {
+		"fabricloader": ">=0.4.0"
+	}
+}
