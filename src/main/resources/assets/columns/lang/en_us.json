@@ -1,6 +1,7 @@
 {
 	"block.columns.brick_column": "Brick Column",
 	"block.columns.cobblestone_column": "Cobblestone Column",
+	"block.columns.granite_column": "Granite Column",
 	"block.columns.mossy_cobblestone_column": "Mossy Cobblestone Column",
 	"block.columns.mossy_stone_brick_column": "Mossy Stone Brick Column",
 	"block.columns.prismarine_column": "Prismarine Column",

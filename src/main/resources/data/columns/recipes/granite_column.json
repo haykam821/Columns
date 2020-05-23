@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"ggg",
+		" g ",
+		"ggg"
+	],
+	"key": {
+		"g": {
+			"item": "minecraft:granite"
+		}
+	},
+	"result": {
+		"item": "columns:granite_column",
+		"count": 6
+	}
+}

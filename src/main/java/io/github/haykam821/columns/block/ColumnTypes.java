@@ -16,7 +16,8 @@ public enum ColumnTypes {
 	BRICK("brick", Blocks.BRICKS),
 	PRISMARINE("prismarine", Blocks.PRISMARINE),
 	RED_SANDSTONE("red_sandstone", Blocks.RED_SANDSTONE),
-	MOSSY_STONE_BRICK("mossy_stone_brick", Blocks.MOSSY_STONE_BRICKS);
+	MOSSY_STONE_BRICK("mossy_stone_brick", Blocks.MOSSY_STONE_BRICKS),
+	GRANITE("granite", Blocks.GRANITE);
 
 	public final ColumnBlock block;
 	public final BlockItem item;
