@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"mmm",
+		" m ",
+		"mmm"
+	],
+	"key": {
+		"m": {
+			"item": "minecraft:mossy_stone_bricks"
+		}
+	},
+	"result": {
+		"item": "columns:mossy_stone_brick_column",
+		"count": 6
+	}
+}
