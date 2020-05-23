@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"sss",
+		" s ",
+		"sss"
+	],
+	"key": {
+		"s": {
+			"item": "minecraft:sandstone"
+		}
+	},
+	"result": {
+		"item": "columns:sandstone_column",
+		"count": 6
+	}
+}
