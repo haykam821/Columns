@@ -1,0 +1,8 @@
+{
+	"type": "minecraft:stonecutting",
+	"ingredient": {
+		"item": "minecraft:red_sandstone"
+	},
+	"result": "columns:red_sandstone_column",
+	"count": 1
+}
