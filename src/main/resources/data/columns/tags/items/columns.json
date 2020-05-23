@@ -3,6 +3,7 @@
 		"columns:andesite_column",
 		"columns:brick_column",
 		"columns:cobblestone_column",
+		"columns:diorite_column",
 		"columns:end_stone_brick_column",
 		"columns:granite_column",
 		"columns:mossy_cobblestone_column",

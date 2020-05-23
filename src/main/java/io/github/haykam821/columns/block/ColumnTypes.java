@@ -23,7 +23,8 @@ public enum ColumnTypes {
 	ANDESITE("andesite", Blocks.ANDESITE),
 	RED_NETHER_BRICK("red_nether_brick", Blocks.RED_NETHER_BRICKS),
 	SANDSTONE("sandstone", Blocks.SANDSTONE),
-	END_STONE_BRICK("end_stone_brick", Blocks.END_STONE_BRICKS);
+	END_STONE_BRICK("end_stone_brick", Blocks.END_STONE_BRICKS),
+	DIORITE("diorite", Blocks.DIORITE);
 
 	public final ColumnBlock block;
 	public final BlockItem item;
