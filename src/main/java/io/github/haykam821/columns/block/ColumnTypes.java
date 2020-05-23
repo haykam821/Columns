@@ -13,7 +13,8 @@ import net.minecraft.util.registry.Registry;
 public enum ColumnTypes {
 	COBBLESTONE("cobblestone", Blocks.COBBLESTONE),
 	MOSSY_COBBLESTONE("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE),
-	BRICK("brick", Blocks.BRICKS);
+	BRICK("brick", Blocks.BRICKS),
+	PRISMARINE("prismarine", Blocks.PRISMARINE);
 
 	public final ColumnBlock block;
 	public final BlockItem item;
