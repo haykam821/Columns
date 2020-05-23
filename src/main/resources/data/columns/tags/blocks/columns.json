@@ -1,5 +1,6 @@
 {
 	"values": [
+		"columns:andesite_column",
 		"columns:brick_column",
 		"columns:cobblestone_column",
 		"columns:granite_column",
