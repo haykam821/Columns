@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"nnn",
+		" n ",
+		"nnn"
+	],
+	"key": {
+		"n": {
+			"item": "minecraft:nether_bricks"
+		}
+	},
+	"result": {
+		"item": "columns:nether_brick_column",
+		"count": 6
+	}
+}
