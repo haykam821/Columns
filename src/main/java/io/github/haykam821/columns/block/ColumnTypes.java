@@ -12,7 +12,8 @@ import net.minecraft.util.registry.Registry;
 
 public enum ColumnTypes {
 	COBBLESTONE("cobblestone", Blocks.COBBLESTONE),
-	MOSSY_COBBLESTONE("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE);
+	MOSSY_COBBLESTONE("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE),
+	BRICK("brick", Blocks.BRICKS);
 
 	public final ColumnBlock block;
 	public final BlockItem item;

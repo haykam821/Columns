@@ -1,4 +1,5 @@
 {
+	"block.columns.brick_column": "Brick Column",
 	"block.columns.cobblestone_column": "Cobblestone Column",
 	"block.columns.mossy_cobblestone_column": "Mossy Cobblestone Column"
 }
