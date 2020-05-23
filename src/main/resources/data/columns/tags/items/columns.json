@@ -1,5 +1,6 @@
 {
 	"values": [
-		"columns:cobblestone_column"
+		"columns:cobblestone_column",
+		"columns:mossy_cobblestone_column"
 	]
 }

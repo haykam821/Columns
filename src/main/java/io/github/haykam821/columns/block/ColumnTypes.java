@@ -11,7 +11,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public enum ColumnTypes {
-	COBBLESTONE("cobblestone", Blocks.COBBLESTONE);
+	COBBLESTONE("cobblestone", Blocks.COBBLESTONE),
+	MOSSY_COBBLESTONE("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE);
 
 	public final ColumnBlock block;
 	public final BlockItem item;
