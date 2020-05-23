@@ -5,5 +5,6 @@
 	"block.columns.mossy_cobblestone_column": "Mossy Cobblestone Column",
 	"block.columns.mossy_stone_brick_column": "Mossy Stone Brick Column",
 	"block.columns.prismarine_column": "Prismarine Column",
-	"block.columns.red_sandstone_column": "Red Sandstone Column"
+	"block.columns.red_sandstone_column": "Red Sandstone Column",
+	"block.columns.stone_brick_column": "Stone Brick Column"
 }
