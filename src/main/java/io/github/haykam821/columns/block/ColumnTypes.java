@@ -26,7 +26,8 @@ public enum ColumnTypes {
 	END_STONE_BRICK("end_stone_brick", Blocks.END_STONE_BRICKS),
 	DIORITE("diorite", Blocks.DIORITE),
 	BLACKSTONE("blackstone", Blocks.BLACKSTONE),
-	POLISHED_BLACKSTONE("polished_blackstone", Blocks.POLISHED_BLACKSTONE);
+	POLISHED_BLACKSTONE("polished_blackstone", Blocks.POLISHED_BLACKSTONE),
+	POLISHED_BLACKSTONE_BRICK("polished_blackstone_brick", Blocks.POLISHED_BLACKSTONE_BRICKS);
 
 	public final ColumnBlock block;
 	public final BlockItem item;

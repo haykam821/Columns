@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"ppp",
+		" p ",
+		"ppp"
+	],
+	"key": {
+		"p": {
+			"item": "minecraft:polished_blackstone_bricks"
+		}
+	},
+	"result": {
+		"item": "columns:polished_blackstone_brick_column",
+		"count": 6
+	}
+}
