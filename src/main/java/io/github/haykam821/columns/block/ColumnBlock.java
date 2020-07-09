@@ -3,8 +3,8 @@ package io.github.haykam821.columns.block;
 import io.github.haykam821.columns.Main;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.block.Waterloggable;
-import net.minecraft.entity.EntityContext;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -16,8 +16,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 
 public class ColumnBlock extends Block implements Waterloggable {
 	public static final BooleanProperty UP = Properties.UP;
@@ -34,7 +34,7 @@ public class ColumnBlock extends Block implements Waterloggable {
 	}
 
 	@Override
-	public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, EntityContext context) {
+	public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
 		if (state.get(UP) && state.get(DOWN)) {
 			return VoxelShapes.union(UP_SHAPE, CENTER_SHAPE, DOWN_SHAPE);
 		} else if (state.get(UP)) {
@@ -65,7 +65,7 @@ public class ColumnBlock extends Block implements Waterloggable {
 	}
 
 	@Override
-	public BlockState getStateForNeighborUpdate(BlockState state, Direction towards, BlockState neighborState, IWorld world, BlockPos pos, BlockPos neighborPos) {
+	public BlockState getStateForNeighborUpdate(BlockState state, Direction towards, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
 		if (state.get(WATERLOGGED)) {
 			world.getFluidTickScheduler().schedule(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
 		}
