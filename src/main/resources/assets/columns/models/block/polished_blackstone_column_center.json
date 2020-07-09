@@ -1,0 +1,6 @@
+{
+	"parent": "columns:block/column_center",
+	"textures": {
+		"all": "block/polished_blackstone"
+	}
+}
