@@ -46,7 +46,7 @@ public class ColumnBlock extends Block implements Waterloggable {
 		}
 	}
 
-	public boolean hasEndInDirection(World world, BlockPos pos, Direction direction) {
+	public boolean hasEndInDirection(WorldAccess world, BlockPos pos, Direction direction) {
 		BlockPos targetPos = pos.offset(direction);
 		BlockState targetState = world.getBlockState(targetPos);
 		return !Main.COLUMNS.contains(targetState.getBlock());
@@ -71,7 +71,7 @@ public class ColumnBlock extends Block implements Waterloggable {
 		}
 		
 		if (towards == Direction.UP || towards == Direction.DOWN) {
-			boolean shouldConnect = this.hasEndInDirection(world.getWorld(), pos, towards);
+			boolean shouldConnect = this.hasEndInDirection(world, pos, towards);
 			return state.with(towards == Direction.UP ? UP : DOWN, shouldConnect);
 		}
 		return state;
