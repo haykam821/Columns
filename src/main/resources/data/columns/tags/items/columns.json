@@ -5,6 +5,7 @@
 		"columns:brick_column",
 		"columns:cobbled_deepslate_column",
 		"columns:cobblestone_column",
+		"columns:deepslate_brick_column",
 		"columns:diorite_column",
 		"columns:end_stone_brick_column",
 		"columns:granite_column",

@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"ddd",
+		" d ",
+		"ddd"
+	],
+	"key": {
+		"d": {
+			"item": "minecraft:deepslate_bricks"
+		}
+	},
+	"result": {
+		"item": "columns:deepslate_brick_column",
+		"count": 6
+	}
+}
