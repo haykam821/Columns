@@ -28,7 +28,8 @@ public enum ColumnTypes {
 	BLACKSTONE("blackstone", Blocks.BLACKSTONE),
 	POLISHED_BLACKSTONE("polished_blackstone", Blocks.POLISHED_BLACKSTONE),
 	POLISHED_BLACKSTONE_BRICK("polished_blackstone_brick", Blocks.POLISHED_BLACKSTONE_BRICKS),
-	COBBLED_DEEPSLATE("cobbled_deepslate", Blocks.COBBLED_DEEPSLATE);
+	COBBLED_DEEPSLATE("cobbled_deepslate", Blocks.COBBLED_DEEPSLATE),
+	POLISHED_DEEPSLATE("polished_deepslate", Blocks.POLISHED_DEEPSLATE);
 
 	public final ColumnBlock block;
 	public final BlockItem item;
