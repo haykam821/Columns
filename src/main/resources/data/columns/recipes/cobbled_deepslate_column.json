@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"ccc",
+		" c ",
+		"ccc"
+	],
+	"key": {
+		"c": {
+			"item": "minecraft:cobbled_deepslate"
+		}
+	},
+	"result": {
+		"item": "columns:cobbled_deepslate_column",
+		"count": 6
+	}
+}
