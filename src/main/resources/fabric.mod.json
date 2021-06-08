@@ -19,6 +19,10 @@
 	"license": "MIT",
 	"icon": "assets/columns/icon.png",
 	"depends": {
-		"fabricloader": ">=0.4.0"
+		"fabricloader": ">=0.4.0",
+		"fabric-object-builder-api-v1": "*",
+		"fabric-registry-sync-v0": "*",
+		"fabric-resource-loader-v0": "*",
+		"fabric-tag-extensions-v0": "*"
 	}
 }
