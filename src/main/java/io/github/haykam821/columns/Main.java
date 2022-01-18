@@ -11,7 +11,7 @@ public class Main implements ModInitializer {
 	public static final String MOD_ID = "columns";
 
 	private static final Identifier COLUMNS_ID = new Identifier(MOD_ID, "columns");
-	public static final Tag<Block> COLUMNS = TagFactory.BLOCK.create(COLUMNS_ID);
+	public static final Tag.Identified<Block> COLUMNS = TagFactory.BLOCK.create(COLUMNS_ID);
 
 	@Override
 	public void onInitialize() {
