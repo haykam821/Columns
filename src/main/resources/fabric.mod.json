@@ -14,6 +14,9 @@
 	"entrypoints": {
 		"main": [
 			"io.github.haykam821.columns.Main"
+		],
+		"fabric-datagen": [
+			"io.github.haykam821.columns.data.ColumnsDatagen"
 		]
 	},
 	"license": "MIT",

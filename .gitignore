@@ -32,6 +32,7 @@ gradle/wrapper/
 run/
 bin/
 build/
+src/main/generated/
 
 .classpath
 .DS_Store
