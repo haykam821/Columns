@@ -23,6 +23,6 @@
 		"fabric-object-builder-api-v1": "*",
 		"fabric-registry-sync-v0": "*",
 		"fabric-resource-loader-v0": "*",
-		"fabric-tag-extensions-v0": "*"
+		"fabric-tag-extensions-v0": ">=1.2.0"
 	}
 }
