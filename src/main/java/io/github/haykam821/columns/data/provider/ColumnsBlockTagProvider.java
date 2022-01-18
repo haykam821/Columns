@@ -14,11 +14,11 @@ public class ColumnsBlockTagProvider extends FabricTagProvider.BlockTagProvider 
 
 	@Override
 	protected void generateTags() {
-		FabricTagBuilder<Block> builder = this.getOrCreateTagBuilder(Main.COLUMNS);
+		FabricTagBuilder<Block> builder = this.getOrCreateTagBuilder(Main.COLUMNS_BLOCK_TAG);
 		for (ColumnTypes columnType : ColumnTypes.values()) {
 			builder.add(columnType.block);
 		}
 
-		this.getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).addTag(Main.COLUMNS);
+		this.getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE).addTag(Main.COLUMNS_BLOCK_TAG);
 	}
 }
