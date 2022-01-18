@@ -1,8 +1,0 @@
-{
-	"type": "minecraft:stonecutting",
-	"ingredient": {
-		"item": "minecraft:mossy_cobblestone"
-	},
-	"result": "columns:mossy_cobblestone_column",
-	"count": 1
-}

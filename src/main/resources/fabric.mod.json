@@ -19,6 +19,7 @@
 			"io.github.haykam821.columns.data.ColumnsDatagen"
 		]
 	},
+	"accessWidener": "columns.accesswidener",
 	"license": "MIT",
 	"icon": "assets/columns/icon.png",
 	"depends": {

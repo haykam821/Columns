@@ -1,8 +1,0 @@
-{
-	"type": "minecraft:stonecutting",
-	"ingredient": {
-		"item": "minecraft:stone"
-	},
-	"result": "columns:stone_brick_column",
-	"count": 1
-}

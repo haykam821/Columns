@@ -1,0 +1,16 @@
+accessWidener	v2	named
+
+accessible	method	net/minecraft/data/server/recipe/ShapedRecipeJsonFactory	validate	(Lnet/minecraft/util/Identifier;)V
+accessible	field	net/minecraft/data/server/recipe/ShapedRecipeJsonFactory	builder	Lnet/minecraft/advancement/Advancement$Task;
+accessible	field	net/minecraft/data/server/recipe/ShapedRecipeJsonFactory	group	Ljava/lang/String;
+accessible	class	net/minecraft/data/server/recipe/ShapedRecipeJsonFactory$ShapedRecipeJsonProvider
+accessible	field	net/minecraft/data/server/recipe/ShapedRecipeJsonFactory	outputCount	I
+accessible	field	net/minecraft/data/server/recipe/ShapedRecipeJsonFactory	pattern	Ljava/util/List;
+accessible	field	net/minecraft/data/server/recipe/ShapedRecipeJsonFactory	inputs	Ljava/util/Map;
+
+accessible	method	net/minecraft/data/server/recipe/SingleItemRecipeJsonFactory	validate	(Lnet/minecraft/util/Identifier;)V
+accessible	field	net/minecraft/data/server/recipe/SingleItemRecipeJsonFactory	builder	Lnet/minecraft/advancement/Advancement$Task;
+accessible	field	net/minecraft/data/server/recipe/SingleItemRecipeJsonFactory	group	Ljava/lang/String;
+accessible	field	net/minecraft/data/server/recipe/SingleItemRecipeJsonFactory	serializer	Lnet/minecraft/recipe/RecipeSerializer;
+accessible	field	net/minecraft/data/server/recipe/SingleItemRecipeJsonFactory	input	Lnet/minecraft/recipe/Ingredient;
+accessible	field	net/minecraft/data/server/recipe/SingleItemRecipeJsonFactory	count	I

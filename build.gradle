@@ -19,6 +19,8 @@ repositories {
 }
 
 loom {
+	accessWidenerPath = file("src/main/resources/columns.accesswidener")
+
 	runs {
 		datagen {
 			server()
