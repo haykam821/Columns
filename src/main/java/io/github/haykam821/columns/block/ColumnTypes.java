@@ -35,9 +35,11 @@ public enum ColumnTypes {
 
 	public final ColumnBlock block;
 	public final BlockItem item;
+	public final Block base;
 
 	private ColumnTypes(String type, Block base) {
 		Identifier id = new Identifier(Main.MOD_ID, type + "_column");
+		this.base = base;
 
 		Block.Settings blockSettings = FabricBlockSettings.copy(base);
 		this.block = new ColumnBlock(blockSettings);
