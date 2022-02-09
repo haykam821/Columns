@@ -14,8 +14,8 @@ import net.minecraft.data.client.model.BlockStateModelGenerator;
 import net.minecraft.data.client.model.BlockStateVariant;
 import net.minecraft.data.client.model.Model;
 import net.minecraft.data.client.model.MultipartBlockStateSupplier;
-import net.minecraft.data.client.model.Texture;
 import net.minecraft.data.client.model.TextureKey;
+import net.minecraft.data.client.model.TextureMap;
 import net.minecraft.data.client.model.VariantSettings;
 import net.minecraft.data.client.model.When;
 import net.minecraft.util.Identifier;
@@ -42,25 +42,25 @@ public class ColumnsModelProvider extends FabricBlockStateDefinitionProvider {
 	}
 
 	public static void registerColumn(BlockStateModelGenerator modelGenerator, Block block, Block base) {
-		Texture texture = getTexture(base);
+		TextureMap textures = getTextures(base);
 
-		Identifier centerId = COLUMN_CENTER.upload(block, texture, modelGenerator.modelCollector);
-		Identifier endId = COLUMN_END.upload(block, texture, modelGenerator.modelCollector);
+		Identifier centerId = COLUMN_CENTER.upload(block, textures, modelGenerator.modelCollector);
+		Identifier endId = COLUMN_END.upload(block, textures, modelGenerator.modelCollector);
 
 		modelGenerator.blockStateCollector.accept(MultipartBlockStateSupplier.create(block)
 			.with(createVariant(centerId))
 			.with(When.create().set(ColumnBlock.DOWN, true), createVariant(endId))
 			.with(When.create().set(ColumnBlock.UP, true), createVariantRotated(endId)));
 
-		Identifier inventoryId = COLUMN_INVENTORY.upload(block, texture, modelGenerator.modelCollector);
+		Identifier inventoryId = COLUMN_INVENTORY.upload(block, textures, modelGenerator.modelCollector);
 		modelGenerator.registerParentedItemModel(block, inventoryId);
 	}
 
-	private static Texture getTexture(Block base) {
+	private static TextureMap getTextures(Block base) {
 		if (base == Blocks.SANDSTONE || base == Blocks.RED_SANDSTONE) {
-			return Texture.all(Texture.getSubId(base, "_top"));
+			return TextureMap.all(TextureMap.getSubId(base, "_top"));
 		}
-		return Texture.all(base);
+		return TextureMap.all(base);
 	}
 
 	private static BlockStateVariant createVariant(Identifier modelId) {
