@@ -6,21 +6,21 @@ import io.github.haykam821.columns.Main;
 import io.github.haykam821.columns.block.ColumnBlock;
 import io.github.haykam821.columns.block.ColumnTypes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockStateDefinitionProvider;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.data.client.BlockStateModelGenerator;
+import net.minecraft.data.client.BlockStateVariant;
 import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.client.model.BlockStateModelGenerator;
-import net.minecraft.data.client.model.BlockStateVariant;
-import net.minecraft.data.client.model.Model;
-import net.minecraft.data.client.model.MultipartBlockStateSupplier;
-import net.minecraft.data.client.model.TextureKey;
-import net.minecraft.data.client.model.TextureMap;
-import net.minecraft.data.client.model.VariantSettings;
-import net.minecraft.data.client.model.When;
+import net.minecraft.data.client.Model;
+import net.minecraft.data.client.MultipartBlockStateSupplier;
+import net.minecraft.data.client.TextureKey;
+import net.minecraft.data.client.TextureMap;
+import net.minecraft.data.client.VariantSettings;
+import net.minecraft.data.client.When;
 import net.minecraft.util.Identifier;
 
-public class ColumnsModelProvider extends FabricBlockStateDefinitionProvider {
+public class ColumnsModelProvider extends FabricModelProvider {
 	public static final Model COLUMN_CENTER = createModel("column_center", "_center", TextureKey.ALL);
 	public static final Model COLUMN_END = createModel("column_end", "_end", TextureKey.ALL);
 	public static final Model COLUMN_INVENTORY = createModel("column_inventory", "_inventory", TextureKey.ALL);

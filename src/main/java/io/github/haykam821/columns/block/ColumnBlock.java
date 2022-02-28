@@ -53,7 +53,7 @@ public class ColumnBlock extends Block implements Waterloggable {
 	public boolean hasEndInDirection(WorldAccess world, BlockPos pos, Direction direction) {
 		BlockPos targetPos = pos.offset(direction);
 		BlockState targetState = world.getBlockState(targetPos);
-		return !Main.COLUMNS_BLOCK_TAG.contains(targetState.getBlock());
+		return !targetState.isIn(Main.COLUMNS_BLOCK_TAG);
 	}
 
 	@Override

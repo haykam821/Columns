@@ -1,5 +1,5 @@
 plugins {
-	id "fabric-loom" version "0.11.+"
+	id "fabric-loom" version "0.11.32"
 	id "maven-publish"
 }
 
@@ -58,7 +58,6 @@ dependencies {
 	// Fabric API (direct)
 	modImplementation(fabricApi.module("fabric-object-builder-api-v1", project.fabric_version))
 	modImplementation(fabricApi.module("fabric-resource-loader-v0", project.fabric_version))
-	modImplementation(fabricApi.module("fabric-tag-extensions-v0", project.fabric_version))
 }
 
 processResources {
