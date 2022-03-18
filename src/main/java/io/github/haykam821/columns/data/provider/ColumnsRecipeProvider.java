@@ -39,6 +39,8 @@ public class ColumnsRecipeProvider extends FabricRecipeProvider {
 		ColumnsRecipeProvider.offerCustomColumnStonecuttingRecipe(exporter, ColumnTypes.DEEPSLATE_TILE.block, Blocks.DEEPSLATE_BRICKS);
 		ColumnsRecipeProvider.offerCustomColumnStonecuttingRecipe(exporter, ColumnTypes.DEEPSLATE_TILE.block, Blocks.POLISHED_DEEPSLATE);
 
+		ColumnsRecipeProvider.offerCustomColumnStonecuttingRecipe(exporter, ColumnTypes.END_STONE_BRICK.block, Blocks.END_STONE);
+
 		ColumnsRecipeProvider.offerCustomColumnStonecuttingRecipe(exporter, ColumnTypes.POLISHED_BLACKSTONE_BRICK.block, Blocks.BLACKSTONE);
 		ColumnsRecipeProvider.offerCustomColumnStonecuttingRecipe(exporter, ColumnTypes.POLISHED_BLACKSTONE_BRICK.block, Blocks.POLISHED_BLACKSTONE);
 
