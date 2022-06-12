@@ -18,12 +18,38 @@ repositories {
 	jcenter()
 }
 
+sourceSets {
+	main {
+		resources {
+			srcDirs += [
+				"src/main/generated"
+			]
+		}
+	}
+
+	datagen {
+		compileClasspath += main.compileClasspath
+		runtimeClasspath += main.runtimeClasspath
+		compileClasspath += main.output
+		runtimeClasspath += main.output
+	}
+}
+
 loom {
 	accessWidenerPath = file("src/main/resources/columns.accesswidener")
+
+	splitEnvironmentSourceSets()
+
+	mods {
+		woodenhoppers {
+			sourceSet(sourceSets.main)
+		}
+	}
 
 	runs {
 		datagen {
 			server()
+			source = sourceSets.datagen
 
 			name = "Data Generation"
 			runDir = "build/datagen"
@@ -34,16 +60,6 @@ loom {
 	}
 }
 assemble.dependsOn(runDatagen)
-
-sourceSets {
-	main {
-		resources {
-			srcDirs += [
-				"src/main/generated"
-			]
-		}
-	}
-}
 
 dependencies {
 	// Main
