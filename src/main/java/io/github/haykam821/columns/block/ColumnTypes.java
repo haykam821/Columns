@@ -19,6 +19,7 @@ public enum ColumnTypes {
 	MOSSY_STONE_BRICK("mossy_stone_brick", Blocks.MOSSY_STONE_BRICKS),
 	GRANITE("granite", Blocks.GRANITE),
 	STONE_BRICK("stone_brick", Blocks.STONE_BRICKS),
+	MUD_BRICK("mud_brick", Blocks.MUD_BRICKS),
 	NETHER_BRICK("nether_brick", Blocks.NETHER_BRICKS),
 	ANDESITE("andesite", Blocks.ANDESITE),
 	RED_NETHER_BRICK("red_nether_brick", Blocks.RED_NETHER_BRICKS),
