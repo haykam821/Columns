@@ -1,18 +1,17 @@
 package io.github.haykam821.columns.data.provider;
 
-import java.util.function.Consumer;
-
 import io.github.haykam821.columns.block.ColumnTypes;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.minecraft.advancement.AdvancementEntry;
+import net.minecraft.advancement.AdvancementRequirements.CriterionMerger;
 import net.minecraft.advancement.AdvancementRewards;
-import net.minecraft.advancement.CriterionMerger;
 import net.minecraft.advancement.criterion.RecipeUnlockedCriterion;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.RecipeJsonBuilder;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.SingleItemRecipeJsonBuilder;
@@ -29,7 +28,7 @@ public class ColumnsRecipeProvider extends FabricRecipeProvider {
 	}
 
 	@Override
-	public void generate(Consumer<RecipeJsonProvider> exporter) {
+	public void generate(RecipeExporter exporter) {
 		for (ColumnTypes columnType : ColumnTypes.values()) {
 			ColumnsRecipeProvider.offerColumnRecipe(exporter, columnType.block, columnType.base);
 			ColumnsRecipeProvider.offerColumnStonecuttingRecipe(exporter, columnType.block, columnType.base);
@@ -54,7 +53,7 @@ public class ColumnsRecipeProvider extends FabricRecipeProvider {
 		ColumnsRecipeProvider.offerCustomColumnStonecuttingRecipe(exporter, ColumnTypes.STONE_BRICK.block, Blocks.STONE);
 	}
 
-	public static void offerColumnRecipe(Consumer<RecipeJsonProvider> exporter, Block block, Block base) {
+	public static void offerColumnRecipe(RecipeExporter exporter, Block block, Block base) {
 		ColumnsRecipeProvider.offerCraftingTo(exporter, ColumnsRecipeProvider.getColumnRecipe(block, Ingredient.ofItems(base))
 			.criterion(RecipeProvider.hasItem(base), RecipeProvider.conditionsFromItem(base)));
 	}
@@ -67,14 +66,14 @@ public class ColumnsRecipeProvider extends FabricRecipeProvider {
 			.pattern("###");
 	}
 
-	public static void offerColumnStonecuttingRecipe(Consumer<RecipeJsonProvider> exporter, Block block, Block base) {
+	public static void offerColumnStonecuttingRecipe(RecipeExporter exporter, Block block, Block base) {
 		Identifier blockId = Registries.ITEM.getId(block.asItem());
 		Identifier recipeId = new Identifier(blockId.getNamespace(), blockId.getPath() + "_from_stonecutting");
 
 		ColumnsRecipeProvider.offerCustomColumnStonecuttingRecipe(exporter, recipeId, block, base);
 	}
 
-	public static void offerCustomColumnStonecuttingRecipe(Consumer<RecipeJsonProvider> exporter, Block block, Block base) {
+	public static void offerCustomColumnStonecuttingRecipe(RecipeExporter exporter, Block block, Block base) {
 		Identifier baseId = Registries.ITEM.getId(base.asItem());
 		Identifier blockId = Registries.ITEM.getId(block.asItem());
 
@@ -82,44 +81,44 @@ public class ColumnsRecipeProvider extends FabricRecipeProvider {
 		ColumnsRecipeProvider.offerCustomColumnStonecuttingRecipe(exporter, recipeId, block, base);
 	}
 
-	private static void offerCustomColumnStonecuttingRecipe(Consumer<RecipeJsonProvider> exporter, Identifier recipeId, Block block, Block base) {
+	private static void offerCustomColumnStonecuttingRecipe(RecipeExporter exporter, Identifier recipeId, Block block, Block base) {
 		ColumnsRecipeProvider.offerSingleItemTo(exporter, recipeId, SingleItemRecipeJsonBuilder.createStonecutting(Ingredient.ofItems(base), RecipeCategory.DECORATIONS, block, 1)
 			.criterion(RecipeProvider.hasItem(base), RecipeProvider.conditionsFromItem(base)));
 	}
 
-	private static void offerCraftingTo(Consumer<RecipeJsonProvider> exporter, ShapedRecipeJsonBuilder factory) {
+	private static void offerCraftingTo(RecipeExporter exporter, ShapedRecipeJsonBuilder factory) {
 		Identifier recipeId = CraftingRecipeJsonBuilder.getItemId(factory.getOutputItem());
 		ColumnsRecipeProvider.offerShapedTo(exporter, recipeId, factory);
 	}
 
-	private static void offerShapedTo(Consumer<RecipeJsonProvider> exporter, Identifier recipeId, ShapedRecipeJsonBuilder factory) {
+	private static void offerShapedTo(RecipeExporter exporter, Identifier recipeId, ShapedRecipeJsonBuilder factory) {
 		factory.validate(recipeId);
 
 		Identifier advancementId = ColumnsRecipeProvider.getAdvancementId(recipeId);
-		factory.advancementBuilder
-			.parent(new Identifier("recipes/root"))
+		AdvancementEntry advancement = exporter.getAdvancementBuilder()
 			.criterion("has_the_recipe", RecipeUnlockedCriterion.create(recipeId))
 			.rewards(AdvancementRewards.Builder.recipe(recipeId))
-			.criteriaMerger(CriterionMerger.OR);
+			.criteriaMerger(CriterionMerger.OR)
+			.build(advancementId);
 
 		String group = factory.group == null ? "" : factory.group;
 		CraftingRecipeCategory category = RecipeJsonBuilder.getCraftingCategory(factory.category);
 
-		exporter.accept(new ShapedRecipeJsonBuilder.ShapedRecipeJsonProvider(recipeId, factory.getOutputItem(), factory.count, group, category, factory.pattern, factory.inputs, factory.advancementBuilder, advancementId, factory.showNotification));
+		exporter.accept(new ShapedRecipeJsonBuilder.ShapedRecipeJsonProvider(recipeId, factory.getOutputItem(), factory.count, group, category, factory.pattern, factory.inputs, advancement, factory.showNotification));
 	}
 
-	private static void offerSingleItemTo(Consumer<RecipeJsonProvider> exporter, Identifier recipeId, SingleItemRecipeJsonBuilder factory) {
+	private static void offerSingleItemTo(RecipeExporter exporter, Identifier recipeId, SingleItemRecipeJsonBuilder factory) {
 		factory.validate(recipeId);
 
 		Identifier advancementId = ColumnsRecipeProvider.getAdvancementId(recipeId);
-		factory.advancementBuilder
-			.parent(new Identifier("recipes/root"))
+		AdvancementEntry advancement = exporter.getAdvancementBuilder()
 			.criterion("has_the_recipe", RecipeUnlockedCriterion.create(recipeId))
 			.rewards(AdvancementRewards.Builder.recipe(recipeId))
-			.criteriaMerger(CriterionMerger.OR);
+			.criteriaMerger(CriterionMerger.OR)
+			.build(advancementId);
 
 		String group = factory.group == null ? "" : factory.group;
-		exporter.accept(new SingleItemRecipeJsonBuilder.SingleItemRecipeJsonProvider(recipeId, factory.serializer, group, factory.input, factory.getOutputItem(), factory.count, factory.advancementBuilder, advancementId));
+		exporter.accept(new SingleItemRecipeJsonBuilder.SingleItemRecipeJsonProvider(recipeId, factory.serializer, group, factory.input, factory.getOutputItem(), factory.count, advancement));
 	}
 
 	private static Identifier getAdvancementId(Identifier recipeId) {
