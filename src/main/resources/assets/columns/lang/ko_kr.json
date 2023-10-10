@@ -1,0 +1,23 @@
+{
+	"block.columns.andesite_column": "안산암 대들보",
+	"block.columns.blackstone_column": "흑암 대들보",
+	"block.columns.brick_column": "벽돌 대들보",
+	"block.columns.cobbled_deepslate_column": "심층 조약돌 대들보",
+	"block.columns.cobblestone_column": "조약돌 대들보",
+	"block.columns.deepslate_brick_column": "심층암 벽돌 대들보",
+	"block.columns.deepslate_tile_column": "심층암 타일 대들보",
+	"block.columns.diorite_column": "섬록암 대들보",
+	"block.columns.end_stone_brick_column": "엔드 석재 벽돌 대들보",
+	"block.columns.granite_column": "화강암 대들보",
+	"block.columns.mossy_cobblestone_column": "이끼 낀 조약돌 대들보",
+	"block.columns.mossy_stone_brick_column": "이끼 낀 석재 벽돌 대들보",
+	"block.columns.nether_brick_column": "네더 벽돌 대들보",
+	"block.columns.polished_blackstone_brick_column": "윤나는 흑암 벽돌 대들보",
+	"block.columns.polished_blackstone_column": "윤나는 흑암 대들보",
+	"block.columns.polished_deepslate_column": "윤나는 심층암 대들보",
+	"block.columns.prismarine_column": "프리즈머린 대들보",
+	"block.columns.red_nether_brick_column": "붉은 네더 벽돌 대들보",
+	"block.columns.red_sandstone_column": "붉은 사암 대들보",
+	"block.columns.sandstone_column": "사암 대들보",
+	"block.columns.stone_brick_column": "석재 벽돌 대들보"
+}
