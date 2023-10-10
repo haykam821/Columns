@@ -105,7 +105,7 @@ public class ColumnsRecipeProvider extends FabricRecipeProvider {
 		String group = factory.group == null ? "" : factory.group;
 		CraftingRecipeCategory category = RecipeJsonBuilder.getCraftingCategory(factory.category);
 
-		exporter.accept(new ShapedRecipeJsonBuilder.ShapedRecipeJsonProvider(recipeId, factory.getOutputItem(), factory.count, group, category, factory.pattern, factory.inputs, factory.advancementBuilder, advancementId, factory.field_42956));
+		exporter.accept(new ShapedRecipeJsonBuilder.ShapedRecipeJsonProvider(recipeId, factory.getOutputItem(), factory.count, group, category, factory.pattern, factory.inputs, factory.advancementBuilder, advancementId, factory.showNotification));
 	}
 
 	private static void offerSingleItemTo(Consumer<RecipeJsonProvider> exporter, Identifier recipeId, SingleItemRecipeJsonBuilder factory) {

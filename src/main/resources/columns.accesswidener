@@ -4,7 +4,7 @@ accessible	method	net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder	valid
 accessible	field	net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder	advancementBuilder	Lnet/minecraft/advancement/Advancement$Builder;
 accessible	field	net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder	group	Ljava/lang/String;
 accessible	field	net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder	category	Lnet/minecraft/recipe/book/RecipeCategory;
-accessible	field	net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder	field_42956	Z
+accessible	field	net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder	showNotification	Z
 accessible	class	net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder$ShapedRecipeJsonProvider
 accessible	field	net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder	count	I
 accessible	field	net/minecraft/data/server/recipe/ShapedRecipeJsonBuilder	pattern	Ljava/util/List;
