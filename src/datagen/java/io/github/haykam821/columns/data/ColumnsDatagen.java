@@ -12,15 +12,16 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 public class ColumnsDatagen implements DataGeneratorEntrypoint {
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator dataGenerator) {
-		dataGenerator.addProvider(ColumnsBlockLootTableProvider::new);
+		FabricDataGenerator.Pack pack = dataGenerator.createPack();
 
-		FabricTagProvider.BlockTagProvider blockTags = new ColumnsBlockTagProvider(dataGenerator);
-		dataGenerator.addProvider(blockTags);
+		pack.addProvider(ColumnsBlockLootTableProvider::new);
 
-		dataGenerator.addProvider(new ColumnsItemTagProvider(dataGenerator, blockTags));
+		FabricTagProvider.BlockTagProvider blockTags = pack.addProvider(ColumnsBlockTagProvider::new);
 
-		dataGenerator.addProvider(ColumnsModelProvider::new);
+		pack.addProvider((dataOutput, registries) -> new ColumnsItemTagProvider(dataOutput, registries, blockTags));
 
-		dataGenerator.addProvider(ColumnsRecipeProvider::new);
+		pack.addProvider(ColumnsModelProvider::new);
+
+		pack.addProvider(ColumnsRecipeProvider::new);
 	}
 }

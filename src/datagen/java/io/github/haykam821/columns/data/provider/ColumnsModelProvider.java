@@ -5,7 +5,7 @@ import java.util.Optional;
 import io.github.haykam821.columns.Main;
 import io.github.haykam821.columns.block.ColumnBlock;
 import io.github.haykam821.columns.block.ColumnTypes;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -25,8 +25,8 @@ public class ColumnsModelProvider extends FabricModelProvider {
 	public static final Model COLUMN_END = createModel("column_end", "_end", TextureKey.ALL);
 	public static final Model COLUMN_INVENTORY = createModel("column_inventory", "_inventory", TextureKey.ALL);
 
-	public ColumnsModelProvider(FabricDataGenerator dataGenerator) {
-		super(dataGenerator);
+	public ColumnsModelProvider(FabricDataOutput dataOutput) {
+		super(dataOutput);
 	}
 
 	@Override
