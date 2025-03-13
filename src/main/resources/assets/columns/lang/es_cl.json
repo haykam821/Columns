@@ -1,0 +1,19 @@
+{
+	"block.columns.andesite_column": "Columna de andesita",
+	"block.columns.blackstone_column": "Columna de piedra negra",
+	"block.columns.brick_column": "Columna de ladrillos",
+	"block.columns.cobblestone_column": "Columna de adoquín",
+	"block.columns.diorite_column": "Columna de diorita",
+	"block.columns.end_stone_brick_column": "Columna de ladrillos de piedra del end",
+	"block.columns.granite_column": "Columna de granito",
+	"block.columns.mossy_cobblestone_column": "Columna de adoquín musgoso",
+	"block.columns.mossy_stone_brick_column": "Columna de ladrillos de piedra musgosos",
+	"block.columns.nether_brick_column": "Columna de ladrillo del Nether",
+	"block.columns.polished_blackstone_brick_column": "Columna de ladrillos de piedra negra pulida",
+	"block.columns.polished_blackstone_column": "Columna de piedra negra pulida",
+	"block.columns.prismarine_column": "Columna de prismarina",
+	"block.columns.red_nether_brick_column": "Columna de ladrillos del Nether rojos",
+	"block.columns.red_sandstone_column": "Columna de arenisca roja",
+	"block.columns.sandstone_column": "Columna de arenisca",
+	"block.columns.stone_brick_column": "Columna de ladrillos de piedra"
+}
