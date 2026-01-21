@@ -1,18 +1,19 @@
 package io.github.haykam821.columns.block;
 
 import io.github.haykam821.columns.Main;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroups;
-import net.minecraft.item.Items;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 
 public enum ColumnTypes {
 	TUFF("tuff", Blocks.TUFF, Items.TUFF_WALL),
@@ -52,25 +53,25 @@ public enum ColumnTypes {
 		this.base = base;
 		this.wall = wall;
 
-		Block.Settings blockSettings = Block.Settings.copy(base)
-			.registryKey(RegistryKey.of(RegistryKeys.BLOCK, id));
+		BlockBehaviour.Properties blockSettings = BlockBehaviour.Properties.ofFullCopy(base)
+			.setId(ResourceKey.create(Registries.BLOCK, id));
 
 		this.block = new ColumnBlock(blockSettings);
 
-		Item.Settings itemSettings = new Item.Settings()
-			.registryKey(RegistryKey.of(RegistryKeys.ITEM, id))
-			.useBlockPrefixedTranslationKey();
+		Item.Properties itemSettings = new Item.Properties()
+			.setId(ResourceKey.create(Registries.ITEM, id))
+			.useBlockDescriptionPrefix();
 
 		this.item = new BlockItem(this.block, itemSettings);
 
-		Registry.register(Registries.BLOCK, id, this.block);
-		Registry.register(Registries.ITEM, id, this.item);
+		Registry.register(BuiltInRegistries.BLOCK, id, this.block);
+		Registry.register(BuiltInRegistries.ITEM, id, this.item);
 	}
 
 	public static void register() {
-		ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
+		CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.BUILDING_BLOCKS).register(entries -> {
 			for (ColumnTypes type : ColumnTypes.values()) {
-				entries.addBefore(type.wall, type.item);
+				entries.insertBefore(type.wall, type.item);
 			}
 		});
 	}

@@ -1,15 +1,17 @@
-accessWidener	v2	named
+accessWidener	v2	official
 
-accessible	method	net/minecraft/data/recipe/ShapedRecipeJsonBuilder	validate	(Lnet/minecraft/registry/RegistryKey;)Lnet/minecraft/recipe/RawShapedRecipe;
-accessible	field	net/minecraft/data/recipe/ShapedRecipeJsonBuilder	group	Ljava/lang/String;
-accessible	field	net/minecraft/data/recipe/ShapedRecipeJsonBuilder	criteria	Ljava/util/Map;
-accessible	field	net/minecraft/data/recipe/ShapedRecipeJsonBuilder	category	Lnet/minecraft/recipe/book/RecipeCategory;
-accessible	field	net/minecraft/data/recipe/ShapedRecipeJsonBuilder	showNotification	Z
-accessible	field	net/minecraft/data/recipe/ShapedRecipeJsonBuilder	count	I
+accessible	method	net/minecraft/data/recipes/ShapedRecipeBuilder	ensureValid	(Lnet/minecraft/resources/ResourceKey;)Lnet/minecraft/world/item/crafting/ShapedRecipePattern;
+accessible	field	net/minecraft/data/recipes/ShapedRecipeBuilder	group	Ljava/lang/String;
+accessible	field	net/minecraft/data/recipes/ShapedRecipeBuilder	criteria	Ljava/util/Map;
+accessible	field	net/minecraft/data/recipes/ShapedRecipeBuilder	category	Lnet/minecraft/data/recipes/RecipeCategory;
+accessible	field	net/minecraft/data/recipes/ShapedRecipeBuilder	showNotification	Z
+accessible	field	net/minecraft/data/recipes/ShapedRecipeBuilder	result	Lnet/minecraft/world/item/ItemStackTemplate;
 
-accessible	method	net/minecraft/data/recipe/StonecuttingRecipeJsonBuilder	validate	(Lnet/minecraft/registry/RegistryKey;)V
-accessible	field	net/minecraft/data/recipe/StonecuttingRecipeJsonBuilder	criteria	Ljava/util/Map;
-accessible	field	net/minecraft/data/recipe/StonecuttingRecipeJsonBuilder	group	Ljava/lang/String;
-accessible	field	net/minecraft/data/recipe/StonecuttingRecipeJsonBuilder	input	Lnet/minecraft/recipe/Ingredient;
-accessible	field	net/minecraft/data/recipe/StonecuttingRecipeJsonBuilder	count	I
-accessible	field	net/minecraft/data/recipe/StonecuttingRecipeJsonBuilder	recipeFactory	Lnet/minecraft/recipe/SingleStackRecipe$RecipeFactory;
+accessible	method	net/minecraft/data/recipes/SingleItemRecipeBuilder	ensureValid	(Lnet/minecraft/resources/ResourceKey;)V
+accessible	field	net/minecraft/data/recipes/SingleItemRecipeBuilder	criteria	Ljava/util/Map;
+accessible	field	net/minecraft/data/recipes/SingleItemRecipeBuilder	group	Ljava/lang/String;
+accessible	field	net/minecraft/data/recipes/SingleItemRecipeBuilder	ingredient	Lnet/minecraft/world/item/crafting/Ingredient;
+accessible	field	net/minecraft/data/recipes/SingleItemRecipeBuilder	result	Lnet/minecraft/world/item/ItemStackTemplate;
+accessible	field	net/minecraft/data/recipes/SingleItemRecipeBuilder	factory	Lnet/minecraft/world/item/crafting/SingleItemRecipe$Factory;
+
+accessible field net/minecraft/data/loot/BlockLootSubProvider map Ljava/util/Map;

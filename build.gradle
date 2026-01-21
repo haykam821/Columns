@@ -1,9 +1,12 @@
 plugins {
-	id "fabric-loom" version "1.9.2"
+	id "net.fabricmc.fabric-loom" version "1.14.10"
 	id "maven-publish"
 }
 
-archivesBaseName = project.archives_base_name
+base {
+	archivesName = project.archives_base_name
+}
+
 version = project.mod_version
 group = project.maven_group
 
@@ -33,16 +36,16 @@ assemble.dependsOn(runDatagen)
 dependencies {
 	// Main
 	minecraft("com.mojang:minecraft:${project.minecraft_version}")
-	mappings("net.fabricmc:yarn:${project.yarn_mappings}:v2")
-	modImplementation("net.fabricmc:fabric-loader:${project.loader_version}")
+	implementation("net.fabricmc:fabric-loader:${project.loader_version}")
 
 	// Fabric API (helper)
-	modImplementation(fabricApi.module("fabric-registry-sync-v0", project.fabric_version))
-	modImplementation(fabricApi.module("fabric-data-generation-api-v1", project.fabric_version))
+	implementation(fabricApi.module("fabric-registry-sync-v0", project.fabric_version))
+	implementation(fabricApi.module("fabric-data-generation-api-v1", project.fabric_version))
+	implementation(fabricApi.module("fabric-creative-tab-api-v1", project.fabric_version))
 
 	// Fabric API (direct)
-	modImplementation(fabricApi.module("fabric-object-builder-api-v1", project.fabric_version))
-	modImplementation(fabricApi.module("fabric-resource-loader-v0", project.fabric_version))
+	implementation(fabricApi.module("fabric-object-builder-api-v1", project.fabric_version))
+	implementation(fabricApi.module("fabric-resource-loader-v0", project.fabric_version))
 }
 
 processResources {
@@ -54,8 +57,8 @@ processResources {
 }
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_21
-	targetCompatibility = JavaVersion.VERSION_21
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
 }
 
 tasks.withType(JavaCompile) {

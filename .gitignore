@@ -36,3 +36,4 @@ src/main/generated/
 
 .classpath
 .DS_Store
+/.idea

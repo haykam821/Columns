@@ -3,102 +3,102 @@ package io.github.haykam821.columns.block;
 import com.mojang.serialization.MapCodec;
 
 import io.github.haykam821.columns.Main;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.Waterloggable;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.Properties;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
-import net.minecraft.world.tick.ScheduledTickView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class ColumnBlock extends Block implements Waterloggable {
-	public static final BooleanProperty UP = Properties.UP;
-	public static final BooleanProperty DOWN = Properties.DOWN;
-	public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+public class ColumnBlock extends Block implements SimpleWaterloggedBlock {
+	public static final BooleanProperty UP = BlockStateProperties.UP;
+	public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
+	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-	public static final VoxelShape UP_SHAPE = Block.createCuboidShape(0, 13, 0, 16, 16, 16);
-	public static final VoxelShape CENTER_SHAPE = Block.createCuboidShape(4, 0, 4, 12, 16, 12);
-	public static final VoxelShape DOWN_SHAPE = Block.createCuboidShape(0, 0, 0, 16, 3, 16);
+	public static final VoxelShape UP_SHAPE = Block.box(0, 13, 0, 16, 16, 16);
+	public static final VoxelShape CENTER_SHAPE = Block.box(4, 0, 4, 12, 16, 12);
+	public static final VoxelShape DOWN_SHAPE = Block.box(0, 0, 0, 16, 3, 16);
 
-	private static final VoxelShape UP_CENTER_DOWN_SHAPE = VoxelShapes.union(UP_SHAPE, CENTER_SHAPE, DOWN_SHAPE);
-	private static final VoxelShape UP_CENTER_SHAPE = VoxelShapes.union(UP_SHAPE, CENTER_SHAPE);
-	private static final VoxelShape CENTER_DOWN_SHAPE = VoxelShapes.union(CENTER_SHAPE, DOWN_SHAPE);
+	private static final VoxelShape UP_CENTER_DOWN_SHAPE = Shapes.or(UP_SHAPE, CENTER_SHAPE, DOWN_SHAPE);
+	private static final VoxelShape UP_CENTER_SHAPE = Shapes.or(UP_SHAPE, CENTER_SHAPE);
+	private static final VoxelShape CENTER_DOWN_SHAPE = Shapes.or(CENTER_SHAPE, DOWN_SHAPE);
 
-	public static final MapCodec<ColumnBlock> CODEC = Block.createCodec(ColumnBlock::new);
+	public static final MapCodec<ColumnBlock> CODEC = Block.simpleCodec(ColumnBlock::new);
 
-	public ColumnBlock(Settings settings) {
+	public ColumnBlock(Properties settings) {
 		super(settings);
-		this.setDefaultState(this.getStateManager().getDefaultState().with(UP, true).with(DOWN, true).with(WATERLOGGED, false));
+		this.registerDefaultState(this.getStateDefinition().any().setValue(UP, true).setValue(DOWN, true).setValue(WATERLOGGED, false));
 	}
 
 	@Override
-	public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
-		if (state.get(UP) && state.get(DOWN)) {
+	public VoxelShape getShape(BlockState state, BlockGetter view, BlockPos pos, CollisionContext context) {
+		if (state.getValue(UP) && state.getValue(DOWN)) {
 			return UP_CENTER_DOWN_SHAPE;
-		} else if (state.get(UP)) {
+		} else if (state.getValue(UP)) {
 			return UP_CENTER_SHAPE;
-		} else if (state.get(DOWN)) {
+		} else if (state.getValue(DOWN)) {
 			return CENTER_DOWN_SHAPE;
 		} else {
 			return CENTER_SHAPE;
 		}
 	}
 
-	public boolean hasEndInDirection(WorldView world, BlockPos pos, Direction direction) {
-		BlockPos targetPos = pos.offset(direction);
+	public boolean hasEndInDirection(LevelReader world, BlockPos pos, Direction direction) {
+		BlockPos targetPos = pos.relative(direction);
 		BlockState targetState = world.getBlockState(targetPos);
-		return !targetState.isIn(Main.COLUMNS_BLOCK_TAG);
+		return !targetState.is(Main.COLUMNS_BLOCK_TAG);
 	}
 
 	@Override
-	public BlockState getPlacementState(ItemPlacementContext context) {
-		World world = context.getWorld();
-		BlockPos pos = context.getBlockPos();
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		Level world = context.getLevel();
+		BlockPos pos = context.getClickedPos();
 
 		boolean shouldConnectUp = this.hasEndInDirection(world, pos, Direction.UP);
 		boolean shouldConnectDown = this.hasEndInDirection(world, pos, Direction.DOWN);
-		boolean shouldBeWaterlogged = world.getFluidState(pos).getFluid() == Fluids.WATER;
+		boolean shouldBeWaterlogged = world.getFluidState(pos).getType() == Fluids.WATER;
 
-		return this.getDefaultState().with(UP, shouldConnectUp).with(DOWN, shouldConnectDown).with(WATERLOGGED, shouldBeWaterlogged);
+		return this.defaultBlockState().setValue(UP, shouldConnectUp).setValue(DOWN, shouldConnectDown).setValue(WATERLOGGED, shouldBeWaterlogged);
 	}
 
 	@Override
-	protected BlockState getStateForNeighborUpdate(BlockState state, WorldView world, ScheduledTickView tickView, BlockPos pos, Direction towards, BlockPos neighborPos, BlockState neighborState, Random random) {
-		if (state.get(WATERLOGGED)) {
-			tickView.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+	protected BlockState updateShape(BlockState state, LevelReader world, ScheduledTickAccess tickView, BlockPos pos, Direction towards, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
+		if (state.getValue(WATERLOGGED)) {
+			tickView.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
 		}
 		
 		if (towards == Direction.UP || towards == Direction.DOWN) {
 			boolean shouldConnect = this.hasEndInDirection(world, pos, towards);
-			return state.with(towards == Direction.UP ? UP : DOWN, shouldConnect);
+			return state.setValue(towards == Direction.UP ? UP : DOWN, shouldConnect);
 		}
 		return state;
 	}
 
 	@Override
 	public FluidState getFluidState(BlockState state) {
-		return state.get(WATERLOGGED) ? Fluids.WATER.getDefaultState() : Fluids.EMPTY.getDefaultState();
+		return state.getValue(WATERLOGGED) ? Fluids.WATER.defaultFluidState() : Fluids.EMPTY.defaultFluidState();
 	}
 
 	@Override
-	public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+	public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(UP, DOWN, WATERLOGGED);
 	}
 
 	@Override
-	protected MapCodec<? extends ColumnBlock> getCodec() {
+	protected MapCodec<? extends ColumnBlock> codec() {
 		return CODEC;
 	}
 }
